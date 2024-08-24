@@ -1,0 +1,32 @@
+{
+  "name": "ascribe-worx_nodejs",
+  "version": "1.0.0",
+  "description": "AScribe Worx Website Developed using front-end technologies and backed up with NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ascribeworx/AScribe-Worx_with_Node.git"
+  },
+  "keywords": [
+    "nodejs",
+    "website",
+    "ascribe-worx"
+  ],
+  "author": "Sushant Gaurav & Aadyaa Srivastava",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ascribeworx/AScribe-Worx_with_Node/issues"
+  },
+  "homepage": "https://github.com/ascribeworx/AScribe-Worx_with_Node#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.3"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  }
+}
