@@ -12,20 +12,22 @@
                     class="mx-2 footer-links fab fa-linkedin-in"></i></a>
             <a href="https://www.instagram.com/ascribe_worx/" class="anchor" target="_blank"><i
                     class="mx-2 footer-links fab fa-instagram"></i></a>
-            <form>
+            <form action="/subscribe" method="POST">
                 <h5 class="mt-4">Subscribe to our newsletter</h5>
                 <p>Monthly digest of what's new happening in our tech world.</p>
                 <div class="d-flex w-100 gap-2 border-top">
                     <label for="newsletter" class="visually-hidden">Email address</label>
-                    <input id="newsletter" type="text" class="form-control" placeholder="Email address">
-                    <button class="btn btn-primary" type="button">Subscribe</button>
+                    <input id="newsletter" name="email" type="email" class="form-control" placeholder="Email address"
+                        required>
                 </div>
+                <button class="mt-4 btn btn-primary" type="submit">Subscribe</button>
             </form>
+
         </div>
         <div class="container col-md-3">
         </div>
     </div>
     <div class="container text-center mt-3">
-        <p>&copy; 2023 AScribe Worx | All rights reserved.</p>
+        <p>&copy; 2024 AScribe Worx | All rights reserved.</p>
     </div>
 </div>

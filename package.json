@@ -2,10 +2,11 @@
   "name": "ascribe-worx_nodejs",
   "version": "1.0.0",
   "description": "AScribe Worx Website Developed using front-end technologies and backed up with NodeJS",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "start" :"node index.js",
-    "dev": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon -r dotenv/config --experimental-json-modules index.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,13 @@
     "prettier": "^3.3.3"
   },
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.18.0",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.4"
   }
 }
