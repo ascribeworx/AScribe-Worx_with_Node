@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+@import url("");
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f8f9fa;
+  color: #000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Home Section Start --- */
+.home {
+  display: grid;
+  height: 100%;
+}
+
+.home img {
+  max-width: 100%;
+  max-height: 100vh;
+  margin: auto;
+}
+
+@media (max-width: 599px) {
+  .home {
+    display: none;
+  }
+
+  .about-us {
+    display: none;
+  }
+}
+
+/* --- Home Section Ends --- */
+
+/* --- About Us Section Starts --- */
+/* --- About Us Section Ends --- */
+
+/* --- Our Expertise Section Starts --- */
+/* --- Our Expertise Section Ends --- */
+
+/* --- Why Choose Us Section Starts --- */
+.choose-us ul {
+  list-style: none;
+}
+
+.choose-us ul li:before {
+  content: "✓";
+  color: #3363cc;
+}
+/* --- Why Choose Us Section Ends --- */
+
+/* --- FAQ's section Starts --- */
+.accordion-container {
+  width: 100%;
+  max-width: 100%;
+}
+
+.accordion-item {
+  background-color: #ffffff; /* White background for items */
+  border: 1px solid #e0e0e0; /* Light border */
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Softer shadow */
+}
+
+.accordion-header {
+  background-color: #3363cc; /* Soft purple */
+  color: #ffffff; /* White text */
+  padding: 15px;
+  font-size: 15px;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px 8px 0 0;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+  background-color: #3363cc; /* Darker shade of purple */
+}
+
+.accordion-content {
+  background-color: #f8f9fa; /* Very light grey for content */
+  overflow: hidden;
+  padding: 0 12px;
+  max-height: 0;
+  font-size: 14px;
+  transition: max-height 0.3s ease;
+}
+
+.accordion-content p {
+  margin: 15px 0;
+  line-height: 1.5;
+}
+
+.icon {
+  transition: transform 0.3s ease;
+}
+
+.active .icon {
+  transform: rotate(45deg);
+}
+/* --- FAQ's section Ends --- */
+
+/* --- Contact Us Section Starts --- */
+.anchor {
+  text-decoration: none;
+  color: #fff;
+}
+
+.anchor:hover {
+  color: #000;
+}
+
+.contact-us-links {
+  color: #fff;
+  width: 100% !important;
+  padding-bottom: 20px !important;
+  padding-top: 20px !important;
+  background-color: #3363cc;
+  border-radius: 20px;
+  text-size-adjust: auto;
+}
+
+.btn-primary {
+  background-color: #3363cc;
+  border: #3363cc;
+}
+
+.btn-primary:hover {
+  background-color: black !important;
+}
+
+.form-control {
+  height: 52px;
+  background: #fff;
+  font-size: 14px;
+  border-radius: 2px;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid #3363cc;
+}
+
+.form-control[type="text"]:focus {
+  border: 2px solid #000;
+}
+/* --- Contact Us Section Ends ---- */
+
+/* --- Footer Section Starts --- */
+.footer-links {
+  color: #3363cc;
+}
+
+.border-top {
+  background-color: #3363cc;
+  color: #3363cc;
+  border-color: #3363cc;
+}
+/* --- Footer Section Ends --- */
