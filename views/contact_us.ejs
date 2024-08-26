@@ -13,64 +13,7 @@
     <!-- Nav Bar Ends -->
 
     <!-- Contact Us Section Starts -->
-    <div class="container row mt-5">
-        <div id="contact-us" class="container col-md-1"></div>
-        <div class="container mt-5 col-md-5">
-            <h2 class="text-center">Get in Touch with Us
-            </h2>
-            <div class="container">
-                <form class="p-4 mt-2" action="/contact" method="POST">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Enter your Name</label>
-                        <input type="text" class="form-control" id="name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Enter your email ID</label>
-                        <input type="email" class="form-control" id="email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Enter your massage</label>
-                        <textarea type="text" class="form-control" id="message" rows="5"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <button class="btn btn-lg btn-primary">Send Now</button>
-                    </div>
-
-                </form>
-                <div class="container contact-us-links">
-                    <div class="container row">
-                        <div class="container col-md-6">
-                            <h6 class="text-center"><i class="fa-solid fa-user-plus"></i> Follow Us
-                            </h6>
-                        </div>
-                        <div class="container col-md-6 text-center">
-                            <!-- <a href="#" class="anchor" target="_blank"><i
-                                    class="me-3 fa-brands fa-square-facebook"></i></a> -->
-                            <a href="https://twitter.com/AscribeWorx" class="anchor" target="_blank"><i
-                                    class="me-3 fa-brands fa-square-x-twitter"></i></a>
-                            <a href="https://www.linkedin.com/in/ascribe-worx/" class="anchor" target="_blank"><i
-                                    class="me-3 fa-brands fa-linkedin"></i></a>
-                            <a href="https://www.instagram.com/ascribe_worx/" class="anchor" target="_blank"><i
-                                    class="me-3 fa-brands fa-square-instagram"></i></a>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6">
-                            <a href="tel:7903745948" class="anchor anchor-hover"> Click here to &nbsp;<i
-                                    class="fa-solid fa-phone"> </i>&nbsp; Call Us</a>
-                        </div>
-                        <div class="col-md-6">
-                            <a href="mailto:worxascribe@gmail.com" class="anchor anchor-hover">Click here to
-                                &nbsp;<i class="fa-solid fa-envelope"></i>&nbsp; Mail Us</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container col-md-6 d-flex align-items-center justify-content-center">
-            <img src="/images/contact-us.svg" class="img-fluid">
-        </div>
-    </div>
+    <%- include("./partials/contact.ejs") %>
     <!-- Contact Us Section Ends -->
 
     <!-- Footer Section Starts -->
