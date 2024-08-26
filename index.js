@@ -5,6 +5,7 @@ import session from "express-session";
 import flash from "express-flash";
 import dotenv from "dotenv";
 import Subscriber from "./models/Subscriber.js";
+import ContactUs from "./models/ContactUs.js";
 import DB_NAME from "./constants.js";
 
 const app = express();
@@ -65,6 +66,29 @@ app.post("/subscribe", async (req, res) => {
   } catch (error) {
     console.error(error);
     req.flash("error", "Failed to Subscribe. Please Try Again!");
+    res.redirect("/");
+  }
+});
+
+app.post("/contact", async (req, res) => {
+  const name = req.body.name;
+  const email = req.body.email;
+  const message = req.body.message;
+
+  try {
+    // Create a new contact details
+    const newMessage = new Subscriber({ name, email, message });
+    console.log(newMessage);
+
+    // Save the new subscriber
+    await newMessage.save();
+
+    // Flash success message
+    req.flash("success", "Thanks for contacting us! We have got your message successfully.");
+    res.redirect("/");
+  } catch (error) {
+    console.error(error);
+    req.flash("error", "Failed to Send Message. Please Try Again!");
     res.redirect("/");
   }
 });
