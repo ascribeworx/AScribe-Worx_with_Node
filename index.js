@@ -1,11 +1,11 @@
 import express from "express";
 import path from "path";
 import mongoose from "mongoose";
-import bodyParser from "body-parser";
 import session from "express-session";
 import flash from "express-flash";
-import { DB_NAME } from "./constants.js";
 import dotenv from "dotenv";
+import Subscriber from "./models/Subscriber.js";
+import DB_NAME from "./constants.js"
 
 const app = express();
 const PORT = 8000;
@@ -34,66 +34,41 @@ app.use((req, res, next) => {
   next();
 });
 
-// // MongoDB connection
-// async () => {
-//   try {
-//     //Database Connect
-//     await mongoose.connect(
-//       process.env.MONGODB_URI,
-//       {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true,
-//       },
-//       () => {
-//         console.log("Database Connected");
-//       }
-//     );
-
-//     app.listen(3000, () => {
-//       console.log("Server is running on port 3000 ...");
-//     });
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
-
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose
+  .connect(`${process.env.MONGODB_URI}/${DB_NAME}`, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-.then(() => console.log('MongoDB connected Successfully'))
-.catch(error => console.error('MongoDB Connection Error: ', error));
-
-// Create a schema and model for storing emails
-const subscriberSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-});
-
-const Subscriber = mongoose.model("Subscriber", subscriberSchema);
+  })
+  .then(() => console.log("MongoDB connected Successfully"))
+  .catch((error) => console.error("MongoDB Connection Error: ", error));
 
 // Routes
-app.post("/subscribe", (req, res) => {
+app.post("/subscribe", async (req, res) => {
   const email = req.body.email;
 
-  // Create a new subscriber instance
-  const newSubscriber = new Subscriber({ email });
+  try {
+    // Check if the email already exists
+    const existingSubscriber = await Subscriber.findOne({ email });
 
-  // Save the new subscriber using .then()/.catch()
-  newSubscriber
-    .save()
-    .then(() => {
-      req.flash("success", "Subscribed Successfully!");
-      res.redirect("/"); // Redirect to a page, e.g., homepage
-    })
-    .catch((error) => {
-      console.error(error);
-      req.flash("error", "Failed to Subscribe. Please Try Again!");
-      res.redirect("/"); // Redirect to a page, e.g., homepage
-    });
+    if (existingSubscriber) {
+      // Email already exists
+      req.flash("info", "You are already subscribed!");
+      return res.redirect("/");
+    }
+
+    // Create a new subscriber
+    const newSubscriber = new Subscriber({ email });
+
+    // Save the new subscriber
+    await newSubscriber.save();
+
+    // Flash success message
+    req.flash("success", "Subscribed Successfully!");
+    res.redirect("/");
+  } catch (error) {
+    console.error(error);
+    req.flash("error", "Failed to Subscribe. Please Try Again!");
+    res.redirect("/");
+  }
 });
 
 app.get("/", (req, res) => {
