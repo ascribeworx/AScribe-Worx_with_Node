@@ -5,7 +5,7 @@ import session from "express-session";
 import flash from "express-flash";
 import dotenv from "dotenv";
 import Subscriber from "./models/Subscriber.js";
-import DB_NAME from "./constants.js"
+import DB_NAME from "./constants.js";
 
 const app = express();
 const PORT = 8000;
@@ -35,9 +35,7 @@ app.use((req, res, next) => {
 });
 
 mongoose
-  .connect(`${process.env.MONGODB_URI}/${DB_NAME}`, {
-    useNewUrlParser: true,
-  })
+  .connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
   .then(() => console.log("MongoDB connected Successfully"))
   .catch((error) => console.error("MongoDB Connection Error: ", error));
 
@@ -51,7 +49,7 @@ app.post("/subscribe", async (req, res) => {
 
     if (existingSubscriber) {
       // Email already exists
-      req.flash("info", "You are already subscribed!");
+      req.flash("success", "You are already subscribed!");
       return res.redirect("/");
     }
 
