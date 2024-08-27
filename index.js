@@ -50,15 +50,15 @@ app.post("/subscribe", async (req, res) => {
 
     if (existingSubscriber) {
       // Email already exists
-      req.flash("success", "You are already subscribed!");
+      req.flash("success", "Thank you. You are already subscribed!");
       return res.redirect("/");
     }
 
-    // Create a new subscriber
-    const newSubscriber = new Subscriber({ email });
+    // Prepare the new subscriber object
+    const newSubscriber = { email: email };
 
-    // Save the new subscriber
-    await newSubscriber.save();
+    // Insert the new subscriber using insertOne
+    await Subscriber.collection.insertOne(newSubscriber);
 
     // Flash success message
     req.flash("success", "Subscribed Successfully!");
@@ -71,20 +71,24 @@ app.post("/subscribe", async (req, res) => {
 });
 
 app.post("/contact", async (req, res) => {
-  const name = req.body.name;
-  const email = req.body.email;
-  const message = req.body.message;
+  const { name, email, message } = req.body;
 
   try {
-    // Create a new contact details
-    const newMessage = new Subscriber({ name, email, message });
-    console.log(newMessage);
+    // Insert a new contact details
+    const newMessage = {
+      name: name,
+      email: email,
+      message: message,
+    };
 
-    // Save the new subscriber
-    await newMessage.save();
+    // Insert the new message
+    await ContactUs.collection.insertOne(newMessage);
 
     // Flash success message
-    req.flash("success", "Thanks for contacting us! We have got your message successfully.");
+    req.flash(
+      "success",
+      "Thanks for contacting us! We have received your message successfully."
+    );
     res.redirect("/");
   } catch (error) {
     console.error(error);
